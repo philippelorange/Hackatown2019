@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e301421-748d-4232-af85-2abfa9061451" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/hackatown2019.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3e301421-748d-4232-af85-2abfa9061451" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +23,7 @@
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="y" value="27" />
     <option name="width" value="672" />
     <option name="height" value="737" />
@@ -84,15 +77,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1547916355276</updated>
-      <workItem from="1547916356594" duration="2860000" />
+      <workItem from="1547916356594" duration="3748000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2860000" />
+    <option name="totallyTimeSpent" value="3748000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1366" height="740" extended-state="6" />
+    <frame x="0" y="27" width="1366" height="740" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="npm" side_tool="true" />
@@ -126,6 +119,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/images/icon.png">
       <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor" />
