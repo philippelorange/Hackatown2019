@@ -73,7 +73,7 @@ export default class Login extends React.Component {
                         source=
                         {
                             __DEV__
-                                ? require('../assets/images/robot-dev.png')
+                                ? require('../assets/images/TriviaGo.png')
                                 : require('../assets/images/robot-prod.png')
                         }
                         style={styles.welcomeImage}
@@ -91,18 +91,21 @@ export default class Login extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    container: 
+    {
+        bottom: 150,
         flex: 1,
         backgroundColor: '#fff',
         justifyContent: 'center',
-        padding: 10
+        padding: -10
     },
 
     welcomeImage: {
-        width: 200,
-        height: 200,
+        width: 250,
+        height: 500,
+        bottom: -30,
         resizeMode: 'contain',
         marginTop: 0,
-        marginLeft: 50,
+        marginLeft:30,
     },
 });
