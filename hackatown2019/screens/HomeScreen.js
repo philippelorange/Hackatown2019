@@ -1,12 +1,9 @@
 import React from 'react';
 import MapView from 'react-native-maps';
+import {Button} from 'react-native';
+
 import {
-    Image,
-    Platform,
-    ScrollView,
     StyleSheet,
-    Text,
-    TouchableOpacity,
     View,
     Dimensions
 } from 'react-native';
@@ -20,7 +17,7 @@ const LATITUDE_DELTA = 1
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO
 
 export default class HomeScreen extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -37,13 +34,31 @@ export default class HomeScreen extends React.Component {
             polyPosition: {
                 latitude: 45.504384,
                 longitude: -73.612883
-            }
+            },
         }
     }
 
+    isUserInRange() {
+        let x = this.state.initialPosition.latitude - this.state.polyPosition.latitude;
+        let y = this.state.initialPosition.longitude - this.state.polyPosition.longitude;
+        if (x > -0.001 && x < 0.001) {
+            if (y > -0.001 && y < 0.001) {
+                return <Button
+                    onPress={() => navigate('LinksScreen.js')}
+                    title="start"
+                    color="#822F2B"
+                    accessibilityLabel="start"
+                />;
+            }
+        } else {
+            return false;
+        }
+    }
+
+
     watchID: ?number = null;
 
-    componentDidMount(){
+    componentDidMount() {
         navigator.geolocation.getCurrentPosition(position => {
             var lat = parseFloat(position.coords.latitude)
             var long = parseFloat(position.coords.longitude)
@@ -57,7 +72,7 @@ export default class HomeScreen extends React.Component {
 
             this.setState({initialPosition: initialRegion})
             this.setState({markerPosition: initialRegion})
-        }, (error) => alert(JSON.stringify(error)),{enableHighAccuracy: true, timeout: 20000, maximumAge: 1000})
+        }, (error) => alert(JSON.stringify(error)), {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000})
 
         this.watchID = navigator.geolocation.watchPosition(position => {
             var lat = parseFloat(position.coords.latitude)
@@ -72,7 +87,6 @@ export default class HomeScreen extends React.Component {
 
             this.setState({initialPosition: lastRegion})
             this.setState({markerPosition: lastRegion})
-
         })
     }
 
@@ -81,6 +95,7 @@ export default class HomeScreen extends React.Component {
     }
 
     render() {
+        const {navigate} = this.props.navigation;
         return (
             <View style={styles.container}>
                 <MapView style={styles.map}
@@ -88,13 +103,18 @@ export default class HomeScreen extends React.Component {
                 >
                     <MapView.Marker
                         coordinate={this.state.markerPosition}>
-                        <View style = {styles.radius}>
-                            <View style = {styles.marker}>
-
+                        <View style={styles.radius}>
+                            <View style={styles.marker}>
                             </View>
                         </View>
                     </MapView.Marker>
                     <MapView.Marker coordinate={this.state.polyPosition}/>
+                    <Button
+                        onPress={() => navigate('LinksScreen.js')}
+                        title="start"
+                        color="#822F2B"
+                        accessibilityLabel="start"
+                    />
                 </MapView>
 
 
@@ -119,7 +139,7 @@ const styles = StyleSheet.create({
     map: {
         position: 'absolute',
         top: 0,
-        left:0,
+        left: 0,
         bottom: 0,
         right: 0
     },
@@ -130,16 +150,16 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         backgroundColor: 'rgba(0, 112, 255, 0.1)',
         borderWidth: 1,
-        borderColor: 'rgba(0, 112, 255, 0.1',
+        borderColor: 'rgba(0, 112, 255, 0.1)',
         alignItems: 'center',
         justifyContent: 'center'
     },
     marker: {
-        height:20,
+        height: 20,
         width: 20,
         borderWidth: 3,
         borderColor: 'white',
-        borderRadius: 20/2,
+        borderRadius: 20 / 2,
         overflow: 'hidden',
         backgroundColor: '#007AFF'
     }
