@@ -41,8 +41,6 @@ export default class HomeScreen extends React.Component {
         }
     }
 
-    watchID: ?number = null;
-
     componentDidMount(){
         navigator.geolocation.getCurrentPosition(position => {
             var lat = parseFloat(position.coords.latitude)
@@ -96,8 +94,6 @@ export default class HomeScreen extends React.Component {
                     </MapView.Marker>
                     <MapView.Marker coordinate={this.state.polyPosition}/>
                 </MapView>
-
-
             </View>
         );
     }
@@ -130,7 +126,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         backgroundColor: 'rgba(0, 112, 255, 0.1)',
         borderWidth: 1,
-        borderColor: 'rgba(0, 112, 255, 0.1',
+        borderColor: 'rgba(0, 112, 255, 0.1)',
         alignItems: 'center',
         justifyContent: 'center'
     },
