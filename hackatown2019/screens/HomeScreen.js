@@ -44,17 +44,15 @@ export default class HomeScreen extends React.Component {
     isUserInRange() {
         let x = this.state.initialPosition.latitude - this.state.polyPosition.latitude;
         let y = this.state.initialPosition.longitude - this.state.polyPosition.longitude;
-        if (x > -0.001 && x < 0.001) {
-            if (y > -0.001 && y < 0.001) {
+        if (x > -1 && x < 1) {
+            if (y > -1 && y < 1) {
                 return <Button
-                    onPress={() => navigate('LinksScreen.js')}
-                    title="start"
-                    color="#822F2B"
-                    accessibilityLabel="start"
+                        title="Start"
+                        onPress={() => this.props.navigation.navigate('LinksScreen') }
                 />;
             }
         } else {
-            return false;
+            return null;
         }
     }
 
@@ -95,7 +93,6 @@ export default class HomeScreen extends React.Component {
     }
 
     render() {
-        const {navigate} = this.props.navigation;
         return (
             <View style={styles.container}>
                 <MapView style={styles.map}
@@ -109,12 +106,9 @@ export default class HomeScreen extends React.Component {
                         </View>
                     </MapView.Marker>
                     <MapView.Marker coordinate={this.state.polyPosition}/>
-                    <Button
-                        onPress={() => navigate('LinksScreen.js')}
-                        title="start"
-                        color="#822F2B"
-                        accessibilityLabel="start"
-                    />
+                    <View style = {styles.button}>
+                        {this.isUserInRange()}
+                    </View>
                 </MapView>
             </View>
         );
@@ -159,6 +153,11 @@ const styles = StyleSheet.create({
         borderRadius: 20 / 2,
         overflow: 'hidden',
         backgroundColor: '#007AFF'
+    },
+    button: {
+        backgroundColor: '#822F2B',
+        textColor: '#FFFFFF',
+        color: '#FFFFFF'
     }
 
 });
