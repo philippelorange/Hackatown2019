@@ -77,12 +77,13 @@ export default class Quiz extends Component {
 
             this.setState({ countCheck: 0, question: arrnew[this.qno].question, options: arrnew[this.qno].options, correctoption: arrnew[this.qno].correctoption })
         } else {
-
-            this.props.quizFinish(this.score * 100 / 5)
+            this.props.quizFinish(Math.round(this.score * 100 / 3))
+            firebase.database().ref('users/' + userId).set({
+                lastScore: this.props.quizFinish
+            });
         }
     }
     _answer(status, ans) {
-
         if (status == true) {
             const count = this.state.countCheck + 1
             this.setState({ countCheck: count })
@@ -93,25 +94,27 @@ export default class Quiz extends Component {
             const count = this.state.countCheck - 1
             this.setState({ countCheck: count })
             if (this.state.countCheck < 1 || ans == this.state.correctoption) {
-                this.score -= 1
             }
         }
 
     }
     render() {
-        let _this = this
-        const currentOptions = this.state.options
+        let _this = this;
+        const state = this.state;
+        const currentOptions = this.state.options;
+
         const options = Object.keys(currentOptions).map(function (k) {
             return (<View key={k} style={{ margin: 10 }}>
 
-                <Animbutton countCheck={_this.state.countCheck} onColor={"green"} effect={"tada"} _onPress={(status) => _this._answer(status, k)} text={currentOptions[k]} />
-
+                <Animbutton style={styles.answers} countCheck={_this.state.countCheck} onColor={_this.state.countCheck > 0 ? "green":''} effect={"tada"} _onPress={(status) => {_this._answer(status,k); _this.next();}} text={currentOptions[k]} />
             </View>)
         });
 
         return (
             <ScrollView style={{ backgroundColor: '#F5FCFF', paddingTop: 10 }}>
                 <View style={styles.container}>
+
+
 
                     <View style={{ flex: 1, flexDirection: 'column', justifyContent: "space-between", alignItems: 'center', }}>
 
@@ -144,6 +147,9 @@ const styles = StyleSheet.create({
         width: width * 90 / 100,
         borderRadius: 20,
         backgroundColor: 'green'
+    },
+    answer:{
+        color:'black'
     },
     container: {
         flex: 1,

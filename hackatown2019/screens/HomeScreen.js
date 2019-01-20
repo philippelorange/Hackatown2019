@@ -48,7 +48,7 @@ export default class HomeScreen extends React.Component {
             if (y > -1 && y < 1) {
                 return <Button
                     title="Start"
-                    onPress={() => this.props.navigation.navigate('LinksScreen')}
+                    onPress={() => this.props.navigation.navigate('QuizScreen')}
                 />;
             }
         } else {
