@@ -20,6 +20,9 @@ const LATITUDE_DELTA = 1
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO
 
 export default class HomeScreen extends React.Component {
+    static navigationOptions = {
+        title: 'TriviaGo',
+      };
     constructor(props){
         super(props);
 
@@ -97,10 +100,7 @@ export default class HomeScreen extends React.Component {
             </View>
         );
     }
-
-
 }
-
 
 const styles = StyleSheet.create({
     container: {
@@ -112,14 +112,16 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'center'
     },
-    map: {
+    map: 
+    {
         position: 'absolute',
         top: 0,
         left:0,
         bottom: 0,
         right: 0
     },
-    radius: {
+    radius: 
+    {
         height: 50,
         width: 50,
         borderRadius: 25,

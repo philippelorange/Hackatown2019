@@ -81,7 +81,6 @@ export default class Login extends React.Component {
                     <SocialIcon
                         title={"Sign In With Facebook"}
                         button
-                        
                         type={"facebook"}
                         onPress={() => this.loginWithFacebook()}
                     />
@@ -92,18 +91,21 @@ export default class Login extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    container: 
+    {
+        bottom: 150,
         flex: 1,
         backgroundColor: '#fff',
         justifyContent: 'center',
-        padding: 10
+        padding: -10
     },
 
     welcomeImage: {
         width: 250,
         height: 500,
+        bottom: -30,
         resizeMode: 'contain',
         marginTop: 0,
-        marginLeft:20,
+        marginLeft:30,
     },
 });
