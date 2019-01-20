@@ -99,15 +99,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  toolbar: {
-    backgroundColor: '#81c04d',
-    paddingTop: 30,
-    paddingBottom: 10,
-    flexDirection: 'row'
+    paddingTop: 10,
+    backgroundColor: '#fff',
   },
   toolbarButton: {
     width: 55,
