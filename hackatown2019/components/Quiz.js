@@ -77,10 +77,7 @@ export default class Quiz extends Component {
 
             this.setState({ countCheck: 0, question: arrnew[this.qno].question, options: arrnew[this.qno].options, correctoption: arrnew[this.qno].correctoption })
         } else {
-            this.props.quizFinish(Math.round(this.score * 100 / 3))
-            firebase.database().ref('users/' + userId).set({
-                lastScore: this.props.quizFinish
-            });
+            this.props.quizFinish(Math.round(this.score * 100 / 3));
         }
     }
     _answer(status, ans) {
