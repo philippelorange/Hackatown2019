@@ -29,6 +29,9 @@ export default class Login extends React.Component {
             email: '',
             password: ''
         })
+
+         //Setting up global variable
+    global.user = null;
     }
 
     componentDidMount() {
@@ -55,8 +58,12 @@ export default class Login extends React.Component {
             if (type === 'success') {
                 // Get the user's name using Facebook's Graph API
                 const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
-                Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
-                this.props.navigation.navigate('Tabs')
+                const user = await response.json();
+                Alert.alert('Logged in!', 'Hi '+ user.name);
+               
+               this.setState({ id: user.id , name: user.name});
+               this.props.navigation.setParams({ name: user.name , id: user.id})
+                this.props.navigation.navigate('Tabs');
             } else {
                 // type === 'cancel'
             }
@@ -93,19 +100,21 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
     container: 
     {
+        alignItems: 'center',
         bottom: 150,
         flex: 1,
         backgroundColor: '#fff',
-        justifyContent: 'center',
-        padding: -10
+        justifyContent: 'center'
     },
 
     welcomeImage: {
         width: 250,
         height: 500,
         bottom: -30,
+        justifyContent: 'center',
+        alignItems: 'center',
         resizeMode: 'contain',
         marginTop: 0,
-        marginLeft:30,
+        marginLeft:0,
     },
 });

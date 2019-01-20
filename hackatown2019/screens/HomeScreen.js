@@ -38,6 +38,7 @@ export default class HomeScreen extends React.Component {
                 latitude: 45.504384,
                 longitude: -73.612883
             },
+            
         }
     }
 
@@ -47,7 +48,7 @@ export default class HomeScreen extends React.Component {
         if (x > -1 && x < 1) {
             if (y > -1 && y < 1) {
                 return <Button
-                    title="Start"
+                    title="Start Trivia: École Polytechnique de Montréal"
                     onPress={() => this.props.navigation.navigate('QuizScreen')}
                 />;
             }
@@ -57,6 +58,8 @@ export default class HomeScreen extends React.Component {
     }
 
     componentDidMount() {
+      
+     
         navigator.geolocation.getCurrentPosition(position => {
             var lat = parseFloat(position.coords.latitude)
             var long = parseFloat(position.coords.longitude)
@@ -91,6 +94,7 @@ export default class HomeScreen extends React.Component {
     }
 
     render() {
+        const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
                 <MapView style={styles.map}
@@ -153,8 +157,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#007AFF'
     },
     button: {
-        backgroundColor: '#822F2B',
-        color: '#FFFFFF'
+        backgroundColor: 'white',
+        color: 'black',
+        textAlignVertical: 'center'
     }
 
 });
