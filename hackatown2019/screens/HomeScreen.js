@@ -13,7 +13,7 @@ const { width, height } = Dimensions.get('window');
 const SCREEN_HEIGHT = height
 const SCREEN_WIDTH = width
 const ASPECT_RATIO = width / height
-const LATITUDE_DELTA = 1
+const LATITUDE_DELTA = 0.01
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO
 
 export default class HomeScreen extends React.Component {
@@ -133,9 +133,9 @@ const styles = StyleSheet.create({
     },
     radius:
     {
-        height: 50,
-        width: 50,
-        borderRadius: 25,
+        height: 250,
+        width: 250,
+        borderRadius: 150,
         overflow: 'hidden',
         backgroundColor: 'rgba(0, 112, 255, 0.1)',
         borderWidth: 1,
