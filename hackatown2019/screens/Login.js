@@ -104,7 +104,9 @@ const styles = StyleSheet.create({
         bottom: 150,
         flex: 1,
         backgroundColor: '#fff',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: -10,
     },
 
     welcomeImage: {
@@ -115,6 +117,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         resizeMode: 'contain',
         marginTop: 0,
-        marginLeft:0,
+        marginLeft: 0,
     },
 });
