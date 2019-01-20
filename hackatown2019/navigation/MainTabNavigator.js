@@ -4,7 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import QuizScreen from '../screens/QuizScreen';
+import LeaderboardScreen from '../screens/LeaderboardScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -24,11 +24,11 @@ HomeStack.navigationOptions = {
 };
 
 const LinksStack = createStackNavigator({
-  Links: QuizScreen,
+  Links: LeaderboardScreen,
 });
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Leaderboard',
+  tabBarLabel: 'LeaderboardScreen',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
