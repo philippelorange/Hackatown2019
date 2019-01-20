@@ -1,8 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, Alert, View } from 'react-native';
+import { StyleSheet, Text, Alert, View, Image } from 'react-native';
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import * as firebase from 'firebase';
+import { SocialIcon } from 'react-native-elements'
+
 
 // Initialize Firebase
 <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
@@ -16,7 +18,6 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
 
 
 export default class Login extends React.Component {
@@ -68,17 +69,21 @@ export default class Login extends React.Component {
         return (
             <Container style={styles.container}>
                 <Form>
-                    <Button style={{ marginTop: 10 }}
-                        full
-                        rounded
-                        primary
+                    <Image
+                        source=
+                        {
+                            __DEV__
+                                ? require('../assets/images/robot-dev.png')
+                                : require('../assets/images/robot-prod.png')
+                        }
+                        style={styles.welcomeImage}
+                    />
+                    <SocialIcon
+                        title={"Sign In With Facebook"}
+                        button
+                        type={"facebook"}
                         onPress={() => this.loginWithFacebook()}
-                    >
-                        <Text style={{ color: 'white' }}> Login With Facebook</Text>
-                    </Button>
-
-
-
+                    />
                 </Form>
             </Container>
         );
@@ -91,5 +96,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         justifyContent: 'center',
         padding: 10
+    },
+
+    welcomeImage: {
+        width: 200,
+        height: 200,
+        resizeMode: 'contain',
+        marginTop: 0,
+        marginLeft: 50,
     },
 });
